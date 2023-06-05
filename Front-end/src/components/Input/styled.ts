@@ -17,13 +17,6 @@ input{
     }
 }
 .error{
-    width: 100%;
-    height: 16px;
-    padding: 8px;
-
-    position: absolute;
-    
-    color: var(--color-negative);
-    font-size: 14px;
+    border: 1px solid red;
 }
 `

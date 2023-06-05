@@ -77,6 +77,7 @@ export const Main = styled.main`
     border-left: 1px solid var(--color-white-1);
     padding: 16px;
     li {
+      width: max-content;
       display: flex;
       align-items: center;
       gap: 16px;

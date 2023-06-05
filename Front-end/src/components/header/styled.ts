@@ -6,10 +6,9 @@ export const HeaderStyle = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-white-1);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-bottom: 1px solid black;
-  color: var(--color-primary-1);
+  background-color: var(--color-primary-1);
+  color: var(--color-white-1);
   position: sticky;
   top: 0;
   left: 0;

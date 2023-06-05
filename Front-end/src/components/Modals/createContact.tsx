@@ -4,47 +4,52 @@ import { Input } from "../Input";
 import { CreateContact } from "./createContactStyle";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { createUserSchema } from "../../schemas"
+import { createContactSchema } from "../../schemas"
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ClientContext } from "../../contexts/ClientContext";
 
-export const CreateContactModal = ({client_id}: any) => {
+export const CreateContactModal = () => {
   const { createContact } : any = useContext(ClientContext);
 
   const {
     register,
     handleSubmit,
+    formState: { errors }
   } = useForm({
     mode: "onBlur",
-    resolver: yupResolver(createUserSchema),
+    resolver: yupResolver(createContactSchema),
   });
 
   return (
     <CreateContact>
       <ModalBackground size="createContact">
         <div>
-          <form onSubmit={handleSubmit((body)=>{createContact(body,client_id)})}>
+          <form onSubmit={handleSubmit(createContact)}>
             <Input
               name="name"
               type="text"
               placeholder="Digite o nome completo do contato"
               label="Nome"
               register={register("name")}
+              className={errors.name && "error"}
             />
+              <Input
+                name="email"
+                type="email"
+                placeholder="Digite o email do contato"
+                label="E-mail"
+                register={register("email")}
+                className={errors.email && "error"}
+              />
+
             <Input
               name="tel"
               type="text"
               placeholder="Digite o telefone do contato"
               label="Telefone"
               register={register("tel")}
+              className={errors.tel && "error"}
               
-            />
-            <Input
-              name="email"
-              type="email"
-              placeholder="Digite o email do contato"
-              label="E-mail"
-              register={register("email")}
             />
             <div>
               <Button type="submit" name="Adicionar" ></Button>

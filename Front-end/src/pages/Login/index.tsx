@@ -2,27 +2,44 @@ import { Main } from "./style";
 import { Header } from "../../components/header";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
+import { ClientContext } from "../../contexts/ClientContext";
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from "../../schemas";
 
 export const Login = () => {
-  return (
+  const { LoginSubmit } : any = useContext(ClientContext);
+
+  const {
+    register,
+    handleSubmit,
+  } = useForm({
+    mode: "onBlur",
+    resolver: yupResolver(loginSchema),
+  });
+
+    return (
     <>
       <Header />
       <Main>
         <div className="container">
-          <form>
+          <form onSubmit={handleSubmit(LoginSubmit)}>
             <h3>Login</h3>
 
             <Input
               name="email"
               type="email"
               placeholder="Digite seu email"
-              label="E-mail*"
+              label="Email"
+              register={register("email")}
             />
             <Input
               name="password"
               type="password"
               placeholder="Digite sua senha"
-              label="Senha*"
+              label="Senha"
+              register={register("password")}
             />
             <p>Não possui uma conta ? </p>
             <p>
