@@ -2,10 +2,10 @@ import { Repository } from 'typeorm';
 import { AppDataSource } from '../../data-source';
 import { Contact } from '../../entities/contact.entity';
 import { AppError } from '../../errors';
-import { IUpdateContactRequest, IContact } from '../../interfaces/contacts/contacts.interfaces';
-import {contactSchema } from '../../schemas/contacts/contacts.schemas';
+import { IUpdateContactRequest } from '../../interfaces/contacts/contacts.interfaces';
+import {updateContactSchema } from '../../schemas/contacts/contacts.schemas';
 
-export const updateContactService = async (ContactData: IUpdateContactRequest, id: number): Promise<IContact> => {
+export const updateContactService = async (ContactData: IUpdateContactRequest, id: number): Promise<any> => {
 
     const contactRepository: Repository<Contact> = AppDataSource.getRepository(Contact)
 
@@ -21,5 +21,5 @@ export const updateContactService = async (ContactData: IUpdateContactRequest, i
         }
     })
 
-    return contactSchema.parse(contact)
+    return updateContactSchema.parse(contact)
 } 

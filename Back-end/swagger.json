@@ -41,7 +41,7 @@
           "required": true
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Cliente cadastrado com sucesso"
           },
           "400": {

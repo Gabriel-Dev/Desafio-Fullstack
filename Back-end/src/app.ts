@@ -6,11 +6,12 @@ import { contactRoutes } from './routes/contacts/contacts.routes'
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from "../swagger.json"
 import { loginRoutes } from './routes/login/login.routes'
+import cors from 'cors'
 
 
 const app: Application = express()
 app.use(express.json())
-
+app.use(cors())
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/clients", clientRoutes)
