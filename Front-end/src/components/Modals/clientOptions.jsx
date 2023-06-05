@@ -1,30 +1,30 @@
 import { ModalBackground } from "./ModalBackground";
 import { Button } from "../Button";
 import { Input } from "../Input";
-import { ContactOptions } from "./contactOptionsStyle";
+import { ClientOptions } from "./clientOptionsStyle";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 
 import { ClientContext } from "../../contexts/ClientContext";
 
-export const ContactOptionsModal = ({ contact }) => {
-  const { updateContact, deleteContact }= useContext(ClientContext);
+export const ClientOptionsModal = () => {
+  const { updateClient, deleteClient, client, navigate }= useContext(ClientContext);
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      name: contact.name,
-      email: contact.email,
-      tel: contact.tel,
+      name: client.name,
+      email: client.email,
+      tel: client.tel,
     },
   });
 
   return (
-    <ContactOptions>
+    <ClientOptions>
       <ModalBackground size="options">
         <div>
           <form
             onSubmit={handleSubmit((body) => {
-              updateContact(body, contact.id);
+              updateClient(body);
             })}
           >
             <Input
@@ -38,7 +38,7 @@ export const ContactOptionsModal = ({ contact }) => {
               name="email"
               type="email"
               placeholder="Digite o email do contato"
-              label="E-mail"
+              label="Email"
               register={register("email")}
             />
             <Input
@@ -52,15 +52,15 @@ export const ContactOptionsModal = ({ contact }) => {
               <Button type="submit" name="Atualizar"></Button>
               <Button
                 type="button"
-                name="Remover"
+                name="Deletar Conta"
                 onClick={() => {
-                  deleteContact(contact.id);
+                  deleteClient();
                 }}
               ></Button>
             </div>
           </form>
         </div>
       </ModalBackground>
-    </ContactOptions>
+    </ClientOptions>
   );
 };

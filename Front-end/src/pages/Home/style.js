@@ -40,6 +40,19 @@ export const Main = styled.main`
       top: 8px;
       right: 0px;
     }
+    p{
+      font-size: 14px;
+      font-weight: 400;
+      position: relative;
+      top: 4px;
+      cursor: pointer;
+    }
+
+    p:hover{
+      color: var(--color-primary-2);
+      transition: 0.2s;
+      transform: translatey(-2px);
+    }
   }
 
   .container {

@@ -40,7 +40,7 @@ export const ClientProvider = ({ children }) => {
         setLoading(false);
         return;
       }
-      const clientId = jwt_decode<any>(token).sub;
+      const clientId = jwt_decode(token).sub;
       try {
         api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         const response = await api.get(`clients/${clientId}`);
@@ -70,6 +70,40 @@ export const ClientProvider = ({ children }) => {
       }
   }
 
+  const deleteClient = async () => {
+    try {
+      setSpinner(true)
+      const response = await api.delete(`clients/${client.id}`);
+      setOpenModal(false);
+      window.localStorage.clear()
+      navigate("/")
+      notifySucess("Conta deletada com sucesso!");
+    } catch (err) {
+      console.log(err);
+      notifyError("Não foi possível deletar o Conta");
+    } finally {
+      setLoading(false);
+      setSpinner(false)
+    }
+  };
+
+  const updateClient = async (body) => {
+
+    try {
+      setSpinner(true)
+      const response = await api.patch(`clients/${client.id}`, body);
+      setClient(response.data);
+      setOpenModal(false);
+      notifySucess("Perfil atualizado com sucesso!");
+    } catch (err) {
+      console.log(err);
+      notifyError("Não foi possível atualizar o Perfil");
+    } finally {
+      setLoading(false);
+      setSpinner(false)
+    }
+  };
+
   const createContact = async (body)=>{
       try {
         setSpinner(true)
@@ -85,6 +119,7 @@ export const ClientProvider = ({ children }) => {
         setSpinner(false)
       }
   }
+
   const deleteContact = async (contact_id) => {
     try {
       setSpinner(true)
@@ -135,7 +170,9 @@ export const ClientProvider = ({ children }) => {
         createContact,
         contacts,
         deleteContact,
-        updateContact
+        updateContact,
+        deleteClient,
+        updateClient
       }}
     >
       {children}

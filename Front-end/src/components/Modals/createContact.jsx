@@ -25,6 +25,7 @@ export const CreateContactModal = () => {
       <ModalBackground size="createContact">
         <div>
           <form onSubmit={handleSubmit(createContact)}>
+            <h3>Adicionar contato</h3>
             <Input
               name="name"
               type="text"

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const CreateContact= styled.div`
-  .createContact {
+export const ClientOptions = styled.div`
+  .options {
     width: 80%;
     max-width: 400px;
     height: 50%;
@@ -17,6 +17,7 @@ export const CreateContact= styled.div`
       flex-direction: column;
       justify-content: flex-start;
       gap: 32px;
+      
       form {
         height: 100%;
         display: flex;
@@ -32,12 +33,18 @@ export const CreateContact= styled.div`
             margin: 0;
           }
         }
-        button {
-          background-color: var(--color-primary-1);
-          margin-top: 16px;
-        }
-        h3{
-          color: var(--color-primary-2);
+        div{
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          button {
+            width: 50%;
+            background-color: var(--color-primary-1);
+            margin-top: 16px;
+          }
+          button + button {
+            background-color: var(--color-negative);
+          }
         }
       }
     }

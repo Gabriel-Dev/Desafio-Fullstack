@@ -6,6 +6,7 @@ import { MdNoteAdd } from "react-icons/md";
 import { ClientContext } from "../../contexts/ClientContext";
 import { CreateContactModal } from "../../components/Modals/createContact";
 import { ContactOptionsModal } from "../../components/Modals/contactOptions";
+import { ClientOptionsModal } from "../../components/Modals/clientOptions";
 
 export const Home = () => {
   const { navigate, openModal, setOpenModal, contacts, client }=
@@ -24,6 +25,7 @@ export const Home = () => {
                 window.localStorage.clear();
               }}
             />
+          <p onClick={()=>{setOpenModal(<ClientOptionsModal/>)}}>editar perfil</p>
           </h1>
         </div>
         <div className="container">
