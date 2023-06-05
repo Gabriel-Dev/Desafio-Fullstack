@@ -3,8 +3,8 @@ import { ButtonStyle } from "./styled";
 import { ImSpinner2 } from "react-icons/im"
 import { ClientContext } from "../../contexts/ClientContext";
 
-export const Button = ({ type, name, onClick, className}: any) => {
-  const { spinner }: any = useContext(ClientContext);
+export const Button = ({ type, name, onClick, className}) => {
+  const { spinner } = useContext(ClientContext);
   
   return (
     <ButtonStyle

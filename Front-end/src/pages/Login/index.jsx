@@ -9,7 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../../schemas";
 
 export const Login = () => {
-  const { LoginSubmit } : any = useContext(ClientContext);
+  const { LoginSubmit }  = useContext(ClientContext);
 
   const {
     register,

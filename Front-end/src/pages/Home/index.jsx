@@ -8,7 +8,7 @@ import { CreateContactModal } from "../../components/Modals/createContact";
 import { ContactOptionsModal } from "../../components/Modals/contactOptions";
 
 export const Home = () => {
-  const { navigate, openModal, setOpenModal, contacts, client }: any =
+  const { navigate, openModal, setOpenModal, contacts, client }=
     useContext(ClientContext);
   
   return (
@@ -37,7 +37,7 @@ export const Home = () => {
             />
           </div>
           <ul>
-            {contacts && contacts.map((contact: any) => (
+            {contacts && contacts.map((contact) => (
               <li
                 key={contact.id}
                 className="opacity"

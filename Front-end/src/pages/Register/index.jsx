@@ -9,7 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { createClientSchema } from "../../schemas";
 
 export const Register = () => {
-  const { createClient } : any = useContext(ClientContext);
+  const { createClient } = useContext(ClientContext);
 
   const {
     register,

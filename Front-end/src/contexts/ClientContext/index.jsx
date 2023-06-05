@@ -7,15 +7,15 @@ import jwt_decode from "jwt-decode";
 
 export const ClientContext = createContext({});
 
-export const ClientProvider = ({ children }: any) => {
-  const [client, setClient] = useState<any>(null);
-  const [contacts, setContacts] = useState<any>(null);
-  const [openModal, setOpenModal] = useState<any>(false);
+export const ClientProvider = ({ children }) => {
+  const [client, setClient] = useState(null);
+  const [contacts, setContacts] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [spinner, setSpinner] = useState<boolean>(false);
+  const [spinner, setSpinner] = useState(false);
   const navigate = useNavigate();
 
-  const LoginSubmit = async (body: any) => {
+  const LoginSubmit = async (body) => {
     try {
       setSpinner(true)
       const response = await api.post("/login", body);
@@ -35,7 +35,7 @@ export const ClientProvider = ({ children }: any) => {
 
   useEffect(() => {
     async function loadClient() {
-      const token = JSON.parse(localStorage.getItem("@token")!);
+      const token = JSON.parse(localStorage.getItem("@token"));
       if (!token) {
         setLoading(false);
         return;
@@ -55,7 +55,7 @@ export const ClientProvider = ({ children }: any) => {
     loadClient();
   }, [navigate]);
 
-  const createClient = async (body:any)=>{
+  const createClient = async (body)=>{
       try {
         setSpinner(true)
         const response = await api.post(`/clients`, body);
@@ -70,7 +70,7 @@ export const ClientProvider = ({ children }: any) => {
       }
   }
 
-  const createContact = async (body:any)=>{
+  const createContact = async (body)=>{
       try {
         setSpinner(true)
         const response = await api.post(`/contacts`, body);
@@ -85,7 +85,7 @@ export const ClientProvider = ({ children }: any) => {
         setSpinner(false)
       }
   }
-  const deleteContact = async (contact_id :number) => {
+  const deleteContact = async (contact_id) => {
     try {
       setSpinner(true)
       const response = await api.delete(`contacts/${contact_id}/`);
@@ -101,7 +101,7 @@ export const ClientProvider = ({ children }: any) => {
     }
   };
 
-  const updateContact = async (body: any, contact_id :number) => {
+  const updateContact = async (body, contact_id) => {
 
     try {
       setSpinner(true)

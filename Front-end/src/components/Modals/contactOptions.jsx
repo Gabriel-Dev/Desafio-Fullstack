@@ -7,8 +7,8 @@ import { useForm } from "react-hook-form";
 
 import { ClientContext } from "../../contexts/ClientContext";
 
-export const ContactOptionsModal = ({ contact }: any) => {
-  const { updateContact, deleteContact }: any = useContext(ClientContext);
+export const ContactOptionsModal = ({ contact }) => {
+  const { updateContact, deleteContact }= useContext(ClientContext);
 
   const { register, handleSubmit } = useForm({
     defaultValues: {

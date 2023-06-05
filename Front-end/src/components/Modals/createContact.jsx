@@ -9,7 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ClientContext } from "../../contexts/ClientContext";
 
 export const CreateContactModal = () => {
-  const { createContact } : any = useContext(ClientContext);
+  const { createContact } = useContext(ClientContext);
 
   const {
     register,
